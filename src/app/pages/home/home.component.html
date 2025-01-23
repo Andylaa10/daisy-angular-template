@@ -1,0 +1,61 @@
+<div [attr.data-theme]="selectedTheme()" class="flex items-center justify-center flex-col min-h-screen w-full relative" xmlns="http://www.w3.org/1999/html">
+  <div class="absolute top-1 right-1">
+    <div class="dropdown dropdown-end mb-72 tooltip tooltip-left" [attr.data-tip]="selectedTheme()">
+      <div tabindex="0" role="button" class="btn m-1">
+        Theme
+        <svg
+          width="12px"
+          height="12px"
+          class="inline-block h-2 w-2 fill-current opacity-60"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 2048 2048">
+          <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path>
+        </svg>
+      </div>
+      <ul
+        tabindex="0"
+        class="dropdown-content bg-base-300 rounded-box z-[1] w-52 p-2 shadow-2xl max-h-40 overflow-auto"
+      >
+        @for (theme of themes(); track $index )  {
+          <li>
+            <div class="relative flex flex-col items-center gap-2">
+              <div class="absolute inset-0 flex justify-end items-center pointer-events-none pr-1">
+                <div class="flex gap-1">
+                  <span [attr.data-theme]="theme" class="bg-primary rounded-full w-2 h-5"></span>
+                  <span [attr.data-theme]="theme" class="bg-secondary rounded-full w-2 h-5"></span>
+                  <span [attr.data-theme]="theme" class="bg-accent rounded-full w-2 h-5"></span>
+                  <span [attr.data-theme]="theme" class="bg-neutral rounded-full w-2 h-5"></span>
+                </div>
+              </div>
+              <input
+                [checked]="theme === selectedTheme()"
+                type="radio"
+                name="theme-dropdown"
+                class="theme-controller btn btn-sm btn-block btn-ghost justify-start relative z-10"
+                [attr.aria-label]="theme"
+                [value]="theme"
+                (click)="setTheme(theme)"
+              />
+            </div>
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+  <div class="card bg-base-100 w-96 shadow-xl h-full">
+    <figure>
+      <img
+        src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+        alt="Shoes"
+      />
+    </figure>
+    <div class="card-body">
+      <h2 class="card-title">Shoes!</h2>
+      <p>If a dog chews shoes whose shoes does he choose?</p>
+      <div class="card-actions justify-end">
+        <button class="btn btn-primary">Buy Now</button>
+      </div>
+    </div>
+  </div>
+  <h1 class="text-3xl font-bold underline text-primary">Hello world!</h1>
+</div>
