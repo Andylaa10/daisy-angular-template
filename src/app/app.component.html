@@ -1,1 +1,14 @@
-<router-outlet></router-outlet>
+<div class="drawer">
+  <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
+  <div class="drawer-content flex flex-col">
+    <app-header></app-header>
+    <router-outlet></router-outlet>
+  </div>
+  <div class="drawer-side">
+    <label for="my-drawer-3" aria-label="close sidebar" class="drawer-overlay"></label>
+    <ul class="menu bg-base-200 min-h-full w-80 p-4">
+      <app-nav-bar-items menuPlacement="menu-vertical"></app-nav-bar-items>
+    </ul>
+  </div>
+</div>
+<app-footer></app-footer>
