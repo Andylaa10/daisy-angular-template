@@ -1,22 +1,26 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {SettingsStore} from '../../../core/store/settings.store';
+import {Store} from '@ngrx/store';
+import {AppState} from '../../store/app.state';
+import {selectSelectedTheme, selectThemes} from '../../../core/store/settings-store/settings.selectors';
+import {themeStart} from '../../../core/store/settings-store/settings.actions';
+import {AsyncPipe} from '@angular/common';
 
 @Component({
   selector: 'app-theme-dropdown',
-  imports: [],
+  imports: [
+    AsyncPipe
+  ],
   templateUrl: './theme-dropdown.component.html',
   styleUrl: './theme-dropdown.component.scss',
   standalone: true,
-  providers: [SettingsStore],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ThemeDropdownComponent {
-  settingsStore = inject(SettingsStore);
-  themes = this.settingsStore.themeState.themes;
-  selectedTheme = this.settingsStore.themeState.selectedTheme;
+  private store: Store<AppState> = inject(Store);
+  themes = this.store.select(selectThemes);
+  selectedTheme = this.store.select(selectSelectedTheme);
 
   setTheme(theme: string) {
-    console.log(theme);
-    this.settingsStore.setTheme(theme);
+    this.store.dispatch(themeStart({theme: theme}))
   }
 }

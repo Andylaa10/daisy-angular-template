@@ -1,4 +1,4 @@
-<div class="dropdown dropdown-end tooltip tooltip-left" [attr.data-tip]="selectedTheme()">
+<div class="dropdown dropdown-end tooltip tooltip-left" [attr.data-tip]="(selectedTheme | async)">
   <div tabindex="0" role="button" class="btn m-1">
     Theme
     <svg
@@ -14,7 +14,7 @@
     tabindex="0"
     class="dropdown-content bg-base-300 rounded-box z-[1] w-52 p-2 shadow-2xl max-h-40 overflow-auto"
   >
-    @for (theme of themes(); track $index )  {
+    @for (theme of (themes | async); track $index )  {
       <li>
         <div class="relative flex flex-col items-center gap-2">
           <div class="absolute inset-0 flex justify-end items-center pointer-events-none pr-1">
@@ -26,7 +26,7 @@
             </div>
           </div>
           <input
-            [checked]="theme === selectedTheme()"
+            [checked]="theme === (selectedTheme | async)"
             type="radio"
             name="theme-dropdown"
             class="theme-controller btn btn-sm btn-block btn-ghost justify-start relative z-10"
