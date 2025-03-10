@@ -1,4 +1,4 @@
-import themes from 'daisyui/src/theming/themes';
+import themes from 'daisyui/theme/object';
 
 export type ThemeState = {
   themes: string[] | undefined
