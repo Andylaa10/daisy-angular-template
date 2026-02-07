@@ -1,7 +1,7 @@
 import themes from 'daisyui/theme/object';
 
-export type ThemeState = {
-  themes: string[] | undefined
+export interface ThemeState {
+  themes: string[] | undefined;
   selectedTheme: string;
 }
 

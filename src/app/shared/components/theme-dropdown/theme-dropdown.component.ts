@@ -1,5 +1,5 @@
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {SettingsStore} from '../../../core/store/settings.store';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { SettingsStore } from '../../../core/store/settings.store';
 
 @Component({
   selector: 'app-theme-dropdown',
@@ -16,7 +16,6 @@ export class ThemeDropdownComponent {
   selectedTheme = this.settingsStore.themeState.selectedTheme;
 
   setTheme(theme: string) {
-    console.log(theme);
     this.settingsStore.setTheme(theme);
   }
 }

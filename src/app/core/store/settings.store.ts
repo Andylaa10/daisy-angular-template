@@ -1,8 +1,8 @@
-import {patchState, signalStore, withMethods, withState} from '@ngrx/signals';
-import {inject} from '@angular/core';
-import {ThemeService} from '../services/theme.service';
-import {initialSettingsState} from '../state/settings.state';
-import {ThemeState} from '../state/theme.state';
+import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
+import { inject } from '@angular/core';
+import { ThemeService } from '../services/theme.service';
+import { initialSettingsState } from '../state/settings.state';
+import type { ThemeState } from '../state/theme.state';
 
 export const SettingsStore = signalStore(
   withState(initialSettingsState),
@@ -15,10 +15,10 @@ export const SettingsStore = signalStore(
         //Is there a better way to do this
         const themeState: ThemeState = {
           themes: store.themeState.themes(),
-          selectedTheme: theme
-        }
-        patchState(store, {themeState: themeState});
-      }
-    }
+          selectedTheme: theme,
+        };
+        patchState(store, { themeState: themeState });
+      },
+    };
   }),
-)
+);
