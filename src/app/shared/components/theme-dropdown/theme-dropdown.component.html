@@ -1,6 +1,6 @@
 <div
   class="dropdown dropdown-end tooltip tooltip-left"
-  [attr.data-tip]="selectedTheme()"
+  [attr.data-tip]="themeService.Theme"
 >
   <div tabindex="0" role="button" class="btn m-1">
     Theme
@@ -18,9 +18,9 @@
   </div>
   <ul
     tabindex="0"
-    class="dropdown-content bg-base-300 rounded-box z-[1] w-52 p-2 shadow-2xl max-h-40 overflow-auto"
+    class="dropdown-content bg-base-300 rounded-box z-1 w-52 p-2 shadow-2xl max-h-40 overflow-auto"
   >
-    @for (theme of themes(); track $index) {
+    @for (theme of themeService.Themes; track $index) {
       <li>
         <div class="relative flex flex-col items-center gap-2 p-1">
           <div
@@ -46,13 +46,13 @@
             </div>
           </div>
           <input
-            [checked]="theme === selectedTheme()"
+            [checked]="theme === themeService.Theme"
             type="radio"
             name="theme-dropdown"
             class="theme-controller btn btn-sm btn-block btn-ghost justify-start relative z-10"
             [attr.aria-label]="theme"
             [value]="theme"
-            (click)="setTheme(theme)"
+            (click)="themeService.Theme = theme"
           />
         </div>
       </li>
